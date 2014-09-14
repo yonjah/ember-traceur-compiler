@@ -1,7 +1,5 @@
 /* jshint esnext:true */
-/* globals Ember */
-
-import "/js/module_loader_es6";
+import { Ember } from "/js/module_loader_es6";
 
 var App = Ember.Application.create({
 	Resolver: Ember.DefaultResolver.extend({

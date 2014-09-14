@@ -29,3 +29,5 @@ Object.keys(modules).forEach(function (key){
 import "/ember";
 
 export default modules;
+
+export { Ember };

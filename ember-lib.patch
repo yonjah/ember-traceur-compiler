@@ -1,0 +1,102 @@
+diff --git a/bower_components/ember/packages/ember-application/lib/system/application.js b/bower_components/ember/packages/ember-application/lib/system/application.js
+index b867514..afddb11 100644
+--- a/bower_components/ember/packages/ember-application/lib/system/application.js
++++ b/bower_components/ember/packages/ember-application/lib/system/application.js
+@@ -21,7 +21,7 @@ import ObjectController from "ember-runtime/controllers/object_controller";
+ import ArrayController from "ember-runtime/controllers/array_controller";
+ import SelectView from "ember-handlebars/controls/select";
+ import EventDispatcher from "ember-views/system/event_dispatcher";
+-//import ContainerDebugAdapter from "ember-extension-support/container_debug_adapter";
++import ContainerDebugAdapter from "ember-extension-support/container_debug_adapter";
+ import jQuery from "ember-views/system/jquery";
+ import Route from "ember-routing/system/route";
+ import Router from "ember-routing/system/router";
+diff --git a/bower_components/ember/packages/ember-runtime/lib/system/container.js b/bower_components/ember/packages/ember-runtime/lib/system/container.js
+index 4299be5..471bd9f 100644
+--- a/bower_components/ember/packages/ember-runtime/lib/system/container.js
++++ b/bower_components/ember/packages/ember-runtime/lib/system/container.js
+@@ -1,6 +1,6 @@
+ import { set } from "ember-metal/property_set";
++import Container from "container";
+ 
+-var Container = requireModule('container')["default"];
+ Container.set = set;
+ 
+ export default Container;
+diff --git a/bower_components/router.js/lib/router/handler-info.js b/bower_components/router.js/lib/router/handler-info.js
+index 9819324..ebb6d79 100644
+--- a/bower_components/router.js/lib/router/handler-info.js
++++ b/bower_components/router.js/lib/router/handler-info.js
+@@ -1,5 +1,5 @@
+-import { bind, merge, serialize, promiseLabel, applyHook } from './utils';
+-import Promise from 'rsvp/promise';
++import { bind, merge, promiseLabel, applyHook } from './utils';
++import Promise from '/ember-lib/rsvp/promise';
+ 
+ function HandlerInfo(_props) {
+   var props = _props || {};
+diff --git a/bower_components/router.js/lib/router/handler-info/resolved-handler-info.js b/bower_components/router.js/lib/router/handler-info/resolved-handler-info.js
+index dd47078..ed74c7f 100644
+--- a/bower_components/router.js/lib/router/handler-info/resolved-handler-info.js
++++ b/bower_components/router.js/lib/router/handler-info/resolved-handler-info.js
+@@ -1,6 +1,6 @@
+ import HandlerInfo from '../handler-info';
+ import { subclass, promiseLabel } from 'router/utils';
+-import Promise from 'rsvp/promise';
++import Promise from '/ember-lib/rsvp/promise';
+ 
+ var ResolvedHandlerInfo = subclass(HandlerInfo, {
+   resolve: function(shouldContinue, payload) {
+diff --git a/bower_components/router.js/lib/router/handler-info/unresolved-handler-info-by-object.js b/bower_components/router.js/lib/router/handler-info/unresolved-handler-info-by-object.js
+index fc825a3..cd00d90 100644
+--- a/bower_components/router.js/lib/router/handler-info/unresolved-handler-info-by-object.js
++++ b/bower_components/router.js/lib/router/handler-info/unresolved-handler-info-by-object.js
+@@ -1,6 +1,6 @@
+ import HandlerInfo from '../handler-info';
+ import { merge, subclass, promiseLabel, isParam } from 'router/utils';
+-import Promise from 'rsvp/promise';
++import Promise from '/ember-lib/rsvp/promise';
+ 
+ var UnresolvedHandlerInfoByObject = subclass(HandlerInfo, {
+   getModel: function(payload) {
+diff --git a/bower_components/router.js/lib/router/router.js b/bower_components/router.js/lib/router/router.js
+index 7801299..f1dcd97 100644
+--- a/bower_components/router.js/lib/router/router.js
++++ b/bower_components/router.js/lib/router/router.js
+@@ -1,11 +1,10 @@
+ import RouteRecognizer from 'route-recognizer';
+-import Promise from 'rsvp/promise';
+-import { trigger, log, slice, forEach, merge, serialize, extractQueryParams, getChangelist, promiseLabel, callHook } from './utils';
++import Promise from '/ember-lib/rsvp/promise';
++import { trigger, log, slice, forEach, merge, extractQueryParams, getChangelist, promiseLabel, callHook } from './utils';
+ import TransitionState from './transition-state';
+ import { logAbort, Transition, TransitionAborted } from './transition';
+ import NamedTransitionIntent from './transition-intent/named-transition-intent';
+ import URLTransitionIntent from './transition-intent/url-transition-intent';
+-import { ResolvedHandlerInfo } from './handler-info';
+ 
+ var pop = Array.prototype.pop;
+ 
+diff --git a/bower_components/router.js/lib/router/transition-state.js b/bower_components/router.js/lib/router/transition-state.js
+index 6aef122..e15109f 100644
+--- a/bower_components/router.js/lib/router/transition-state.js
++++ b/bower_components/router.js/lib/router/transition-state.js
+@@ -1,6 +1,5 @@
+-import { ResolvedHandlerInfo } from './handler-info';
+ import { forEach, promiseLabel, callHook } from './utils';
+-import Promise from 'rsvp/promise';
++import Promise from '/ember-lib/rsvp/promise';
+ 
+ function TransitionState(other) {
+   this.handlerInfos = [];
+diff --git a/bower_components/router.js/lib/router/transition.js b/bower_components/router.js/lib/router/transition.js
+index 606d6e5..6425a40 100644
+--- a/bower_components/router.js/lib/router/transition.js
++++ b/bower_components/router.js/lib/router/transition.js
+@@ -1,5 +1,4 @@
+-import Promise from 'rsvp/promise';
+-import { ResolvedHandlerInfo } from './handler-info';
++import Promise from '/ember-lib/rsvp/promise';
+ import { trigger, slice, log, promiseLabel } from './utils';
+ 
+ /**

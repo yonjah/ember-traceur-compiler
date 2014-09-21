@@ -3,7 +3,7 @@ ember-traceur-compiler
 
 Please not that this code was not going to be maintained!
 I only created it as a proof of concept to try and understand how to compile
-ember source code without ember-cli. ( you can read more about it [here](https://ca.non.co.il/index.php/your-using-ember-wrong/) )
+ember source code without ember-cli. ( you can read more about it [here](https://ca.non.co.il/index.php/ember-cli-is-making-you-stupid/) )
 
 I think this info might be beneficial for other people so I'm posting
 this repo but this process is way to messy to be used for anything real,
